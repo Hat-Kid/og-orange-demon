@@ -346,7 +346,11 @@
   "plat-eco.o"
   "ropebridge.o"
   "ticky.o"
+  ;; og::orange-demon: added
+  "orange-demon-h.o"
+  "orange-demon.o"
   "hud-classes-pc.o" ;; added
+  "hud-orange-demon.o"
   "mod-settings.o" ;; added mod-base-change
   "mod-common-functions.o" ;; added
   "orb-placer.o" ;; added

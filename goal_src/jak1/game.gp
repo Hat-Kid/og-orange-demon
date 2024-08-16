@@ -2119,6 +2119,10 @@
 
 (goal-src "levels/test-zone/test-zone-obs.gc" "process-drawable")
 
+;; og::orange-demon: added
+(goal-src "engine/mods/orange-demon/orange-demon-h.gc" "process-drawable")
+(goal-src "engine/mods/orange-demon/orange-demon.gc" "orange-demon-h")
+(goal-src "engine/mods/orange-demon/hud-orange-demon.gc" "orange-demon" "hud-classes-pc")
 
 (group-list "all-code"
   `(,@(reverse *all-gc*))

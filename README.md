@@ -1,3 +1,38 @@
+# Orange Demon Challenge
+
+In this mod, you will be chased by Daxter relentlessly throughout the entire game!
+Every time you pick up a power cell, an orb or a scout fly, he will speed up ever so slightly, up to a certain maximum speed.
+
+If you're familiar with the Green Demon Challenge from Super Mario 64, you know what will happen if he catches up...
+
+The challenge starts as soon as you pick up the first power cell on Geyser Rock.
+
+## Things to keep in mind
+
+### Grace Period
+
+When you load a save or die and respawn at a continue point, there will be a grace period of two seconds where Daxter will be idle and unable to harm you. Similarly, Daxter will also stop moving while getting on a zoomer or Flut Flut, when taking damage (until your invincibility frames run out) or when you are using the launch pads to exit the Forbidden Temple and LPC Helix to prevent softlocks since those launch pads force you to go straight up without the ability to change direction.
+
+### Daxter's Speed
+
+In the upper left corner of the screen, you will see a "traj-time" value. The lower the value, the faster Daxter can catch up to Jak. It starts out at 1.0 and goes down, up to a minimum of 0.47 depending on your game progress.
+
+There are some special conditions that will speed up or slow down Daxter regardless of game progress and can go below this minimum value.
+
+Daxter will speed up if Jak...
+
+- is on a zoomer (can go down up to 0.25)
+- on Flut Flut (can go down up to 0.36)
+
+Daxter will slow down if Jak...
+
+- is diving underwater (30% decrease)
+- is shooting yellow eco in mid-air (30% decrease)
+- is using his goggles (30% decrease)
+- is channelling red eco (40% decrease)
+
+---
+
 # OpenGoal-Mod-Base
 Serves as a base template for openGOAL mods that will be supported via [OG-ModLauncher](https://github.com/OpenGOAL-Mods/OG-ModLauncher).
 
@@ -71,37 +106,45 @@ Additionally, you can find further documentation and answers to **frequently ask
 > [!WARNING]
 > **Do not use this decompilation project without providing your own legally purchased copy of the game.** We do not distribute any assets from the game - you must use your own legitimately obtained PS2 copy of the game. We support every retail PAL, NTSC, and NTSC-J build, including Greatest Hits copies.
 
-- [Project Description](#project-description)
-  - [Current Status](#current-status)
-  - [Methodology](#methodology)
-- [Setting up a Development Environment](#setting-up-a-development-environment)
-  - [Docker](#docker)
-  - [Linux](#linux)
-    - [Ubuntu (20.04)](#ubuntu-2004)
-    - [Arch](#arch)
-    - [Fedora](#fedora)
-  - [Windows](#windows)
-    - [Required Software](#required-software)
-    - [Using Visual Studio](#using-visual-studio)
-  - [MacOS](#macos)
-    - [Intel Based](#intel-based)
-    - [Apple Silicon](#apple-silicon)
-  - [VSCode](#vscode)
-    - [Building and Debugging](#building-and-debugging)
-  - [Building and Running the Game](#building-and-running-the-game)
-    - [Extract Assets](#extract-assets)
-    - [Build the Game](#build-the-game)
-    - [Run the Game](#run-the-game)
-      - [Connecting the REPL to the Game](#connecting-the-repl-to-the-game)
-      - [Running the Game Without Auto-Booting](#running-the-game-without-auto-booting)
-    - [Interacting with the Game](#interacting-with-the-game)
-- [Technical Project Overview](#technical-project-overview)
-  - [`goalc`](#goalc)
-    - [Running the compiler](#running-the-compiler)
-  - [`decompiler`](#decompiler)
-    - [Running the decompiler](#running-the-decompiler)
-  - [`goal_src/`](#goal_src)
-  - [`game` runtime](#game-runtime)
+- [Orange Demon Challenge](#orange-demon-challenge)
+  - [Things to keep in mind](#things-to-keep-in-mind)
+    - [Grace Period](#grace-period)
+    - [Daxter's Speed](#daxters-speed)
+- [OpenGoal-Mod-Base](#opengoal-mod-base)
+  - [Custom Navmesh Implementation and Example](#custom-navmesh-implementation-and-example)
+    - [Getting Started](#getting-started)
+    - [Final Words](#final-words)
+  - [Project Description](#project-description)
+    - [Current Status](#current-status)
+    - [Methodology](#methodology)
+  - [Setting up a Development Environment](#setting-up-a-development-environment)
+    - [Docker](#docker)
+    - [Linux](#linux)
+      - [Ubuntu (20.04)](#ubuntu-2004)
+      - [Arch](#arch)
+      - [Fedora](#fedora)
+    - [Windows](#windows)
+      - [Required Software](#required-software)
+      - [Using Visual Studio](#using-visual-studio)
+    - [MacOS](#macos)
+      - [Intel Based](#intel-based)
+      - [Apple Silicon](#apple-silicon)
+    - [VSCode](#vscode)
+      - [Building and Debugging](#building-and-debugging)
+    - [Building and Running the Game](#building-and-running-the-game)
+      - [Extract Assets](#extract-assets)
+      - [Build the Game](#build-the-game)
+      - [Run the Game](#run-the-game)
+        - [Connecting the REPL to the Game](#connecting-the-repl-to-the-game)
+        - [Running the Game Without Auto-Booting](#running-the-game-without-auto-booting)
+      - [Interacting with the Game](#interacting-with-the-game)
+  - [Technical Project Overview](#technical-project-overview)
+    - [`goalc`](#goalc)
+      - [Running the compiler](#running-the-compiler)
+    - [`decompiler`](#decompiler)
+      - [Running the decompiler](#running-the-decompiler)
+    - [`goal_src/`](#goal_src)
+    - [`game` runtime](#game-runtime)
 
 ## Project Description
 

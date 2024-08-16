@@ -18,6 +18,9 @@
 
 ;; The "perm" data is saved to the memory card.
 
+;; og::orange-demon: added
+(defun-extern orange-demon-manager-start symbol none)
+
 ;; DECOMP BEGINS
 
 (define-extern runs-on-jak-death (function symbol none))
@@ -255,6 +258,9 @@
              (set! arg2 (get-or-create-continue! *game-info*)))
            (suspend)
            (start arg0 arg2)
+           ;; og::orange-demon: added
+           (when arg3
+             (if (task-complete? *game-info* (game-task training-gimmie)) (orange-demon-manager-start #t)))
            (none))
          (-> this mode)
          cause

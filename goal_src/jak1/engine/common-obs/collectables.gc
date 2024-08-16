@@ -37,6 +37,9 @@
   (ignore-blue 5)
   (anim 6))
 
+;; og::orange-demon: added
+(defun-extern orange-demon-manager-start symbol none)
+
 ;; DECOMP BEGINS
 
 (define *eco-pill-count* 0)
@@ -952,7 +955,9 @@
     (behavior ((arg0 object) (arg1 handle))
       (set-time! (-> self state-time))
       (set! (-> self state-object) #t)
-      (let ((t9-1 (-> (the-as (state eco-collectable) (find-parent-state)) enter))) (if t9-1 (t9-1))))
+      (let ((t9-1 (-> (the-as (state eco-collectable) (find-parent-state)) enter))) (if t9-1 (t9-1)))
+      ;; og::orange-demon: added
+      (if (name= (-> self name) "fuel-cell-55") (orange-demon-manager-start #t)))
   :trans
     (behavior ()
       (let ((f30-0 (the-as float
