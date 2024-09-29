@@ -76,15 +76,5 @@ jobs:
       metadataSupportedGames: ${{ needs.prep_vars.outputs.supported_games }}
       buildBinaries: ${{ inputs.binary_source == 'build_binaries'}}
       toolingRepo: ${{ needs.prep_vars.outputs.tooling_repo }}
-      # metadataName: "Orange Demon Challenge"
-      # metadataDescription: "Play through the entire game while being chased by Daxter!"
-      # metadataAuthors: "hat-kid"
-      # metadataTags: "challenge,custom-enemy,gameplay-mod"
-      # metadataWebsiteUrl: "https://github.com/Hat-Kid/og-orange-demon"
-      # skipMacOS: true
-      # skipLinux: true
-      # toolingBinaryDir: "out/build/Release/bin"
-      # gameAssetsDir: "game/assets"
-      # copyEntireBinaryDir: true
     secrets:
       token: ${{ secrets.GITHUB_TOKEN }}
